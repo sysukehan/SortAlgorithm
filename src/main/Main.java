@@ -5,12 +5,13 @@ import java.util.Calendar;
 
 import bubbleSort.BubbleSort;
 import insertionSort.InsertionSort;
+import selectionSort.SelectionSort;
 import util.CheckUtil;
 import util.PrintUtil;
 
 public class Main {
 
-	private final static int loopTime = 10;
+	private final static int loopTime = 100000;
 	
 	private static int[] data = new int[loopTime];
 	private static int[] copyData;
@@ -26,14 +27,21 @@ public class Main {
 	
     public static void main(String[] args) {
     	getRandomList();
-//    	bubbleSort();
+    	bubbleSort();
     	insertionSort();
+    	selectionSort();
 	}
     
+    /**
+     * 各类冒泡排序
+     */
     private static void bubbleSort() {
+    	
+    	BubbleSort bs = new BubbleSort();
+    	
     	PrintUtil.printMessage("基本冒泡排序：");
     	copyData = Arrays.copyOf(data, loopTime);
-		BubbleSort bs = new BubbleSort(copyData);
+		bs.setArrays(copyData);
 		isSort(bs.getArrays());
 //		bs.print();
 		beginTime = Calendar.getInstance().getTimeInMillis();
@@ -42,6 +50,7 @@ public class Main {
 		isSort(bs.getArrays());
 		PrintUtil.printMessage((endTime - beginTime) + "ms");
 //		bs.print();
+		
 		PrintUtil.printMessage("改进版冒泡排序：");
     	copyData = Arrays.copyOf(data, loopTime);
 		bs.setArrays(copyData);
@@ -55,29 +64,66 @@ public class Main {
 //		bs.print();
     }
     
+    /**
+     * 各类插入排序
+     */
     private static  void insertionSort() {
+    	
+    	InsertionSort is = new InsertionSort();
+    	
     	PrintUtil.printMessage("基本插入排序：");
     	copyData = Arrays.copyOf(data, loopTime);
-		InsertionSort is = new InsertionSort(copyData);
+    	is.setArrays(copyData);
 		isSort(is.getArrays());
-		is.print();
+//		is.print();
 		beginTime = Calendar.getInstance().getTimeInMillis();
 		is.sort();
 		endTime = Calendar.getInstance().getTimeInMillis();
 		isSort(is.getArrays());
 		PrintUtil.printMessage((endTime - beginTime) + "ms");
-		is.print();
-//		PrintUtil.printMessage("改进版冒泡排序：");
-//    	copyData = Arrays.copyOf(data, loopTime);
-//		is.setArrays(copyData);
-//		isSort(is.getArrays());
-////		bs.print();
-//		beginTime = Calendar.getInstance().getTimeInMillis();
-//		is.improveSort();
-//		endTime = Calendar.getInstance().getTimeInMillis();
-//		isSort(bs.getArrays());
-//		PrintUtil.printMessage((endTime - beginTime) + "ms");
-//		bs.print();
+
+    	PrintUtil.printMessage("二分插入排序：");
+    	copyData = Arrays.copyOf(data, loopTime);
+		is.setArrays(copyData);
+		isSort(is.getArrays());
+//		is.print();
+		beginTime = Calendar.getInstance().getTimeInMillis();
+		is.binaryInsertSort();
+		endTime = Calendar.getInstance().getTimeInMillis();
+		isSort(is.getArrays());
+//		is.print();
+		PrintUtil.printMessage((endTime - beginTime) + "ms");
+		
+    	PrintUtil.printMessage("希尔排序：");
+    	copyData = Arrays.copyOf(data, loopTime);
+		is.setArrays(copyData);
+		isSort(is.getArrays());
+//		is.print();
+		beginTime = Calendar.getInstance().getTimeInMillis();
+		is.shellSort();
+		endTime = Calendar.getInstance().getTimeInMillis();
+		isSort(is.getArrays());
+//		is.print();
+		PrintUtil.printMessage((endTime - beginTime) + "ms");
+    }
+    
+    /**
+     * 各类选择排序
+     */
+    private static void selectionSort() {
+    	SelectionSort ss = new SelectionSort();
+    	
+    	PrintUtil.printMessage("直接选择排序：");
+    	copyData = Arrays.copyOf(data, loopTime);
+    	ss.setArrays(copyData);
+		isSort(ss.getArrays());
+//		ss.print();
+		beginTime = Calendar.getInstance().getTimeInMillis();
+		ss.straightSelectSorting();;
+		endTime = Calendar.getInstance().getTimeInMillis();
+		isSort(ss.getArrays());
+//		ss.print();
+		PrintUtil.printMessage((endTime - beginTime) + "ms");
     }
     
     private static void isSort(int[] arrays) {

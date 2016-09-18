@@ -17,6 +17,10 @@ public class BubbleSort {
 		this.data = arrays;
 	}
 	
+	public BubbleSort() {
+		
+	}
+	
 	public void setArrays(int[] arrays) {
 		this.data = arrays;
 	}

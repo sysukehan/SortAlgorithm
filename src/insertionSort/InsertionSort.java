@@ -1,6 +1,6 @@
 package insertionSort;
 
-import util.PrintUtil;
+import main.BaseSortClass;
 
 /**
  * 插入排序
@@ -8,24 +8,14 @@ import util.PrintUtil;
  * @author kehan
  *
  */
-public class InsertionSort {
-	
-	private int[] data;
-	
-	public InsertionSort(int[] data) {
-		this.data = data;
-	}
-	
-	public InsertionSort() {
-		
-	}
+public class InsertionSort extends BaseSortClass {
 	
 	/**
 	 * 直接插入排序
 	 * 最优时间复杂度为O(N^2)，最差时间复杂度为O(N)，平均时间复杂度为O(N^2)
 	 */
 	public void sort() {
-		if (isEmptyOrNull()) {
+		if (isNullOrEmpty()) {
 			return;
 		}
 		for (int key = 1; key < data.length; key++) {
@@ -44,7 +34,7 @@ public class InsertionSort {
 	 * 最优时间复杂度为O(N^2)，最差时间复杂度为O(N)，平均时间复杂度为O(N^2)
 	 */
 	public void binaryInsertSort() {
-		if (isEmptyOrNull()) {
+		if (isNullOrEmpty()) {
 			return;
 		}
 		for (int key = 1; key < data.length; key++) {
@@ -53,6 +43,10 @@ public class InsertionSort {
 		}
 	}
 	
+	/**
+	 * 二分查找key下标的值应该插入在哪个位置并插入
+	 * @param key
+	 */
 	private void binarySort(int key) {
 		int temp = data[key];
 		int beginPos = 0;
@@ -75,6 +69,11 @@ public class InsertionSort {
 		}
 	}
 	
+	/**
+	 * 将数组中从begin到end位置的数循环右移一位
+	 * @param begin
+	 * @param end
+	 */
 	private void moveData(int begin, int end) {
 		int temp = data[end];
 		for (int i = end; i > begin; i--) {
@@ -99,27 +98,5 @@ public class InsertionSort {
 				}
 			}
 		}
-	}
-	
-	public void print() {
-		PrintUtil.printArrays(data);
-	}
-	
-	public void setArrays(int[] arrays) {
-		data = arrays;
-	}
-	
-	public int[] getArrays() {
-		return data;
-	}
-	
-	private void swap(int i, int j) {
-		int temp = data[i];
-		data[i] = data[j];
-		data[j] = temp;
-	}
-	
-	private boolean isEmptyOrNull() {
-		return data == null || data.length == 0;
 	}
 }

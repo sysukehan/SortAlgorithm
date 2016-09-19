@@ -1,6 +1,6 @@
 package bubbleSort;
 
-import util.PrintUtil;
+import main.BaseSortClass;
 
 /**
  * 冒泡排序
@@ -9,36 +9,7 @@ import util.PrintUtil;
  * @author kehan
  *
  */
-public class BubbleSort {
-
-	private int[] data;
-	
-	public BubbleSort(int[] arrays) {
-		this.data = arrays;
-	}
-	
-	public BubbleSort() {
-		
-	}
-	
-	public void setArrays(int[] arrays) {
-		this.data = arrays;
-	}
-	
-	public int[] getArrays() {
-		return data;
-	}
-	
-	/**
-	 * 输出数组
-	 */
-	public void print() {
-		if (isNullOrEmpty()) {
-			PrintUtil.printMessage("null");
-		} else {
-			PrintUtil.printArrays(data);
-		}
-	}
+public class BubbleSort extends BaseSortClass {
 	
 	/**
 	 * 原始的冒泡算法排序
@@ -76,25 +47,6 @@ public class BubbleSort {
 				return;
 			}
 		}
-	}
-	
-	/**
-	 * 检查待排序的数组是否为空或长度为0
-	 * @return
-	 */
-	private boolean isNullOrEmpty() {
-		return data == null || data.length == 0;
-	}
-	
-	/**
-	 * 交换数组中指定位置两个元素的值
-	 * @param i
-	 * @param j
-	 */
-	private void swap(int i, int j) {
-		int temp = data[i];
-		data[i] = data[j];
-		data[j] = temp;
 	}
 	
 }

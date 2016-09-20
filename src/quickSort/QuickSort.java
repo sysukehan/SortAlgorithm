@@ -24,7 +24,7 @@ public class QuickSort extends BaseSortClass {
 		int key = data[top];
 		while (top < bottom) {
 			while (bottom > top) {
-				if (data[bottom] < key) {
+				if (data[bottom] <= key) {  //  
 					swap(top, bottom);
 					break;
 				}

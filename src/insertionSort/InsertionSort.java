@@ -12,7 +12,7 @@ public class InsertionSort extends BaseSortClass {
 	
 	/**
 	 * 直接插入排序
-	 * 最优时间复杂度为O(N^2)，最差时间复杂度为O(N)，平均时间复杂度为O(N^2)
+	 * 最差时间复杂度为O(N^2)，最优时间复杂度为O(N)，平均时间复杂度为O(N^2)
 	 */
 	public void sort() {
 		if (isNullOrEmpty()) {
@@ -31,7 +31,7 @@ public class InsertionSort extends BaseSortClass {
 	
 	/**
 	 * 二分插入排序
-	 * 最优时间复杂度为O(N^2)，最差时间复杂度为O(N)，平均时间复杂度为O(N^2)
+	 * 最差时间复杂度为O(N^2)，最优时间复杂度为O(N)，平均时间复杂度为O(N^2)
 	 */
 	public void binaryInsertSort() {
 		if (isNullOrEmpty()) {
@@ -58,7 +58,6 @@ public class InsertionSort extends BaseSortClass {
 			} else {
 				endPos = middle;
 			}
-//			System.out.println("beginPos:" + beginPos + " endPos:" + endPos);
 		}
 		if (temp < data[beginPos]) {
 			moveData(beginPos, key);

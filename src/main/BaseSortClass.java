@@ -52,4 +52,14 @@ public class BaseSortClass {
 		data[i] = data[j];
 		data[j] = temp;
 	}
+	
+	public int getMax() {
+		int result = data[0];
+		for (int i = 1; i < data.length; i++) {
+			if (data[i] > result) {
+				result = data[i];
+			}
+		}
+		return result;
+	}
 }

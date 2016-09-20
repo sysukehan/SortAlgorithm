@@ -14,6 +14,9 @@ import main.BaseSortClass;
 public class CountingSort extends BaseSortClass {
 	
 	public void sort() {
+		if (isNullOrEmpty()) {
+			return;
+		}
 		int[] copyData = Arrays.copyOf(data, data.length);
 		if (isNullOrEmpty()) {
 			return;

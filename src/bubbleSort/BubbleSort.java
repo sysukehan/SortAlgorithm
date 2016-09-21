@@ -18,10 +18,11 @@ public class BubbleSort extends BaseSortClass {
 		if (isNullOrEmpty()) {
 			return;
 		}
+		//  data为待排序的数组引用
 		for (int i = data.length - 1; i > 0; i--) {
 			for (int j = 0; j < i; j++) {
 				if (data[j + 1] < data[j]) {
-					swap(j, j + 1);
+					swap(j, j + 1);  //  交换两个数
 				}
 			}
 		}
@@ -32,17 +33,18 @@ public class BubbleSort extends BaseSortClass {
 	 * 当剩下的序列已经排好序了，则不再进行排序
 	 */
 	public void improveSort() {
-		boolean sign = true;
 		if (isNullOrEmpty()) {
 			return;
 		}
+		boolean sign = true;  //  标志位，初始化为true
 		for (int i = data.length - 1; i > 0; i--) {
 			for (int j = 0; j < i; j++) {
 				if (data[j + 1] < data[j]) {
 					swap(j, j + 1);
-					sign = false;
+					sign = false;  //  如果发生交换，说明数组仍为无序，置标志位为false
 				}
 			}
+			//  如果标志位为true，说明上一次循环中没有交换发生，排序可以结束了
 			if (sign) {
 				return;
 			}

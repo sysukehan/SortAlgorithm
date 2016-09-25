@@ -49,17 +49,19 @@ public class BucketSort extends BaseSortClass {
 			//  由于除放在最后的那个数之外，其余的数都是有序的，因此考虑使用插入排序来使桶中的数据重新有序
 			bucket[pos][index[pos]] = data[i];
 			index[pos]++;
-			if (index[pos] <= 1) {
+			if (index[pos] <= 1) {  //  桶中只有一个数据时，不需要插入排序，继续循环
 				continue;
 			}
 			//  基本插入排序
-//			for (int j = index[pos] - 1; j > 0; j--) {
-//				if (bucket[pos][j] < bucket[pos][j - 1]) {
-//					swap(j, j - 1, bucket[pos]);
-//				}
-//			}
-			//  二分插入排序
-			binarySort(bucket[pos], index[pos] - 1);
+			for (int j = index[pos] - 1; j > 0; j--) {
+				if (bucket[pos][j] < bucket[pos][j - 1]) {
+					swap(j, j - 1, bucket[pos]);
+				} else {
+					break;
+				}
+			}
+//			//  二分插入排序
+//			binarySort(bucket[pos], index[pos] - 1);
 		}
 		int counter = 0;
 		for (int i = 0; i < 10; i++) {
@@ -99,6 +101,12 @@ public class BucketSort extends BaseSortClass {
 		data[dst] = key;
 	}
 	
+	/**
+	 * 取出桶中的数据，并且返回下一个放入data中的数据应存放的位置
+	 * @param pos 桶的编号
+	 * @param counter 下一个放入data中的数据应存放的位置
+	 * @return
+	 */
 	private int getBucketResult(int pos, int counter) {
 		for (int i = 0; i < index[pos]; i++) {
 			data[counter] = bucket[pos][i];

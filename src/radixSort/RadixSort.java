@@ -18,7 +18,7 @@ public class RadixSort extends BaseSortClass {
 	 * Most Significant Digit first，最高数位优先
 	 */
 	public void msdSort() {
-		if (isNullOrEmpty()) {
+		if (isNullOrEmpty()) {  //  用于判断待排序数组是否为空或长度为0
 			return;
 		}
 		int maxLength = String.valueOf(getMax()).length();
@@ -28,7 +28,7 @@ public class RadixSort extends BaseSortClass {
 	
 	/**
 	 * 迭代的msd排序
-	 * @param data 代排序数组
+	 * @param data 待排序数组
 	 * @param divider 用于取出数位的除数
 	 * @return
 	 */
@@ -59,6 +59,7 @@ public class RadixSort extends BaseSortClass {
 			}
 		}
 		//  除数不大于0的时候说明对数的每一位都处理完了，接下来将每个桶中的数据拼接起来得到排好序的数据
+		//  然后返回排好序的数据
 		for (int i = 0; i < 10; i++) {
 			sum = sum + index[i];
 		}
@@ -87,11 +88,12 @@ public class RadixSort extends BaseSortClass {
 			radix = new int[10][data.length];
 			index = new int[10];
 			Arrays.fill(index, 0);
-			int divider = (int) Math.pow(10, i);
+			int divider = (int) Math.pow(10, i);  //  使用做除法然后取余的方法来取出某一位
 			//  分配桶
 			for (int j = 0; j < data.length; j++) {
 				int temp = data[j];
 				int key = temp / divider % 10;
+				//  某个桶中数据增加之后，对应的计数器要加1
 				radix[key][index[key]] = temp;
 				index[key]++;
 			}

@@ -17,15 +17,19 @@ public class SelectionSort extends BaseSortClass {
 	 * 最好时间复杂度O(N^2)，最差时间复杂度O(N^2)，平均时间复杂度O(N^2)
 	 */
 	public void straightSelectSorting() {
+		if (isNullOrEmpty()) {
+			return;
+		}
 		int pos = 0;
 		for (int i = 0; i < data.length; i++) {
 			pos = i;
+			//  找出从i开始，到数组末尾这段数组中最小的数，pos标志的是这个最小的数在数组中的位置
 			for (int j = i + 1; j < data.length; j++) {
 				if (data[j] < data[pos]) {
 					pos = j;
 				}
 			}
-			swap(i, pos);
+			swap(i, pos);  //  交换两个数的位置
 		}
 	}
 	
@@ -33,6 +37,10 @@ public class SelectionSort extends BaseSortClass {
 	 * 树形选择排序，又称锦标赛排序
 	 */
 	public void tournamentSort() {
+		if (isNullOrEmpty()) {
+			return;
+		}
+		
 		int depth = 0;
 		int nodes = 0;
 		//  计算出装下待排序数组所需的二叉树的深度
@@ -87,6 +95,9 @@ public class SelectionSort extends BaseSortClass {
 	 * 最好时间复杂度O(NlogN)，最差时间复杂度O(NlogN)，平均时间复杂度O(NlogN)
 	 */
 	public void heapSort() {
+		if (isNullOrEmpty()) {
+			return;
+		}
 		//  初始化数组，使数组成为大根堆
 		buildMaxHeapify();
 		//  将第一个数和最后一个数交换，然后使除最后一个数之外的数组成为大根堆
